@@ -1,8 +1,8 @@
 <template>
-  <button v-if='!link' :class='mode'>
+  <button v-if="!link" :class="mode">
     <slot></slot>
   </button>
-  <router-link v-else :to='to' :class='mode'>
+  <router-link v-else :to="to" :class="mode">
     <slot></slot>
   </router-link>
 </template>
@@ -37,11 +37,11 @@ a {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
   font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
-  color: white;
+  background-color: #F0AB0F;
+  border: 2px solid #4E685F;
+  color: #0A160C;
   cursor: pointer;
-  border-radius: 30px;
+  /*border-radius: 30px;*/
   margin-right: 0.5rem;
   display: inline-block;
 }
@@ -50,26 +50,27 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #270041;
-  border-color: #270041;
+
+  background-color: #4E685F;
+  border-color: #4E685F;
 }
 
-.flat {
+flat {
   background-color: transparent;
-  color: #3a0061;
+  color: #4E685F;
   border: none;
 }
 
-.outline {
+outline {
   background-color: transparent;
-  border-color: #270041;
-  color: #270041;
+  border-color: #4E685F;
+  color: #F21B25;
 }
 
-.flat:hover,
-.flat:active,
-.outline:hover,
-.outline:active {
-  background-color: #edd2ff;
+flat:hover,
+flat:active,
+outline:hover,
+outline:active {
+  background-color: #0A4191;
 }
 </style>

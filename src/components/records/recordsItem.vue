@@ -8,8 +8,8 @@
     </div>
 
     <div>
-      <base-btn mode='outline' link to='contactStoreLink'> View Details</base-btn>
-      <base-btn link to='recordsDetailsLink'> Contact Store</base-btn>
+      <base-btn mode='outline' class='actions' link to='contactStoreLink'> View Details</base-btn>
+      <base-btn link to='recordsDetailsLink' class='actions'> Contact Store</base-btn>
     </div>
 
   </li>
@@ -56,7 +56,7 @@ div {
 }
 
 .actions {
-  display: flex;
+  display: ;
   justify-content: flex-end;
 }
 </style>
