@@ -21,7 +21,7 @@ const router = createRouter({
       path: '/records/:id',
       component: RecordsDetail,
       children: [
-        { path: 'contact' , component: ContactStore }  //records/r1/contact
+        { path: 'contactStore' , component: ContactStore }  //records/r1/contact
       ]
     },
     {
@@ -35,7 +35,6 @@ const router = createRouter({
     {
       path: '/:notFound(.*)',
       component: NotFound
-
     //  (.*) no matter what was entered you will get the notFound route
     },
 

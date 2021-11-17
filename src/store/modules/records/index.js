@@ -24,7 +24,7 @@ export default {
           name: 'In Through the Out Door',
           band: 'Led Zeppelin',
           year: 1979,
-          genre: ['rock', 'indie rock'],
+          genre: ['rock'],
           description: 'In Through the Out Door —en español: Entrando por la salida— es el octavo y último disco de estudio ' +
             'realizado por Led Zeppelin, y publicado por Swan Song Records el 15 de agosto de 1979.' +
             ' El álbum fue nombrado de tal manera por el grupo a causa de sus recientes problemas y el auge de la música punk.',
