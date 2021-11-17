@@ -27,17 +27,17 @@ export default {
 }
 
 .rock {
-  background-color: #3d008d;
+  background-color: #0A4191;
   color: white;
 }
 
 .indie {
-  background-color: #71008d;
+  background-color: #4E685F;
   color: white;
 }
 
 .pop {
-  background-color: #8d006e;
+  background-color: #552521;
   color: white;
 }
 

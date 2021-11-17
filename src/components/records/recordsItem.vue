@@ -8,8 +8,8 @@
     </div>
 
     <div>
-      <base-btn mode='outline' class='actions' link to='contactStoreLink'> View Details</base-btn>
-      <base-btn link to='recordsDetailsLink' class='actions'> Contact Store</base-btn>
+      <base-btn mode='outline' class='actions' link :to='contactStoreLink'> View Details</base-btn>
+      <base-btn link :to='recordsDetailsLink' class='actions'> Contact Store</base-btn>
     </div>
 
   </li>
@@ -24,8 +24,8 @@ export default {
       return this.name + ' ' + this.band;
     },
     contactStoreLink() {
-      return this.$route.path + '/' + this.id + '/contact';  //records/r1/contactStore
-      // return '/records/' + this.id + '/contact'  //records/r1/contactStore
+      return this.$route.path + '/' + this.id + '/contactStore';  //records/r1/contactStore
+      // return '/records/' + this.id + '/contactStore'  //records/r1/contactStore
     },
     recordsDetailsLink() {
       return this.$route.path + '/' + this.id; ///records/r1

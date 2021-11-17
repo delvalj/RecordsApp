@@ -20,6 +20,7 @@ const router = createRouter({
     {
       path: '/records/:id',
       component: RecordsDetail,
+      props: true,
       children: [
         { path: 'contactStore' , component: ContactStore }  //records/r1/contact
       ]
