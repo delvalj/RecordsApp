@@ -4,12 +4,12 @@
     <h4> {{ year }}</h4>
 
     <div>
-      <span v-for='genre in genres' :key='genre' {{ genre }}></span>
+      <base-badge v-for='genre in genre' :key='genre' :type='genre' :title='genre'></base-badge>
     </div>
 
     <div>
-      <router-link to='contactStoreLink'>View Details</router-link>
-      <router-link to='recordsDetailsLink'>Contact Store</router-link>
+      <base-btn mode='outline' link to='contactStoreLink'> View Details</base-btn>
+      <base-btn link to='recordsDetailsLink'> Contact Store</base-btn>
     </div>
 
   </li>
@@ -24,11 +24,11 @@ export default {
       return this.name + ' ' + this.band;
     },
     contactStoreLink() {
-      return  this.$route.path + '/' + this.id + '/contact'  //records/r1/contactStore
+      return this.$route.path + '/' + this.id + '/contact';  //records/r1/contactStore
       // return '/records/' + this.id + '/contact'  //records/r1/contactStore
     },
     recordsDetailsLink() {
-      return this.$route.path + '/' + this.id ///records/r1
+      return this.$route.path + '/' + this.id; ///records/r1
       // return '/records/' + this.id ///records/r1
     }
   }
@@ -37,9 +37,8 @@ export default {
 
 <style scoped>
 li {
-  margin: 1rem 0;
-  border: 1px solid #424242;
-  border-radius: 12px;
+  margin: 1rem 2rem;
+  border: 2px solid #424242;
   padding: 1rem;
 }
 

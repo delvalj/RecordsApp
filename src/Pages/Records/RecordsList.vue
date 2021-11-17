@@ -3,27 +3,34 @@
   <section>
     FILTER
   </section>
-  <section>
-    <div class='controls'>
-      <button>Refresh</button>
-      <router-link to='/registerRecord'>Register a Record</router-link>
-    </div>
-    <ul v-if='hasRecords'>
-      <recordsItem
-        v-for='record in filteredRecords'
-        :key='record.id'
-        :id='record.id'
-        :name='record.name'
-        :band='record.band'
-        :genre:='record.genre'
-        :year='record.year'>
-      </recordsItem>
-    </ul>
-    <h3 v-else>
-      No records Found
-    </h3>
+  <base-card>
+    <section>
 
-  </section>
+      <div class='controls'>
+        <base-btn mode='outline'>
+          Refresh
+        </base-btn>
+
+        <base-btn link to='/registerRecord'>Register a Record</base-btn>
+
+      </div>
+      <ul v-if='hasRecords'>
+        <recordsItem
+          v-for='record in filteredRecords'
+          :key='record.id'
+          :id='record.id'
+          :name='record.name'
+          :band='record.band'
+          :genre:='record.genre'
+          :year='record.year'>
+        </recordsItem>
+      </ul>
+      <h3 v-else>
+        No records Found
+      </h3>
+
+    </section>
+  </base-card>
 
 </template>
 
