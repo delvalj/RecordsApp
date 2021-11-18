@@ -1,7 +1,8 @@
 <template>
-
   <section>
-    FILTER
+    <records-filter @change-filter='setFilters'>
+      FILTER
+    </records-filter>
   </section>
   <base-card>
     <section>
@@ -36,20 +37,49 @@
 
 <script>
 import recordsItem from '../../components/records/recordsItem';
+import RecordsFilter from '@/components/records/RecordsFilter';
 
 export default {
   name: 'RecordsList',
 
-  components: { recordsItem },
+  components: { recordsItem, RecordsFilter },
+
+  data() {
+    return {
+      activeFilters: {
+        rock: true,
+        indie: true,
+        pop: true
+      }
+    };
+  },
 
   computed: {
     filteredRecords() {
       // the first records is the namespaced (on the main index.js) and the second one is the getters name
-      return this.$store.getters['records/records'];
+      const records = this.$store.getters['records/records'];
+      return records.filter(records => {
+        if (this.activeFilters.rock && records.genre.includes('rock')) {
+          return true;
+        }
+
+        if (this.activeFilters.indie && records.genre.includes('indie')) {
+          return true;
+        }
+
+        if (this.activeFilters.pop && records.genre.includes('pop')) {
+          return true;
+        }
+      });
     },
     hasRecords() {
       return this.$store.getters['records/hasRecords'];
 
+    }
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters;
     }
   }
 
