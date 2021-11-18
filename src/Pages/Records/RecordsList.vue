@@ -70,8 +70,10 @@ export default {
         if (this.activeFilters.pop && records.genre.includes('pop')) {
           return true;
         }
+        return false;
       });
     },
+
     hasRecords() {
       return this.$store.getters['records/hasRecords'];
 

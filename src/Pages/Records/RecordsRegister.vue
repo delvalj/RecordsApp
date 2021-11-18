@@ -1,10 +1,17 @@
 <template>
-<h2>Records Register</h2>
+  <section>
+<base-card>
+    <h2>Register a new Record</h2>
+    <record-form></record-form>
+</base-card>
+  </section>
 </template>
 
 <script>
+import RecordForm from '@/components/records/RecordForm';
 export default {
-  name: 'RecordsRegister'
+  name: 'RecordsRegister',
+  components: { RecordForm}
 };
 </script>
 
