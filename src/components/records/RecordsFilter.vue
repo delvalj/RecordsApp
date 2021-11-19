@@ -12,8 +12,8 @@
     </span>
 
     <span class='filter-option'>
-      <input type='checkbox' id='pop' checked @change='setFilter' />
-      <label for='pop'>POP</label>
+      <input type='checkbox' id='rap' checked @change='setFilter' />
+      <label for='rap'>RAP</label>
     </span>
 
   </base-card>
@@ -28,7 +28,7 @@ export default {
       filters: {
         rock: true,
         indie: true,
-        pop: true
+        rap: true
       }
     };
   },

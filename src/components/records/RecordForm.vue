@@ -1,60 +1,122 @@
 <template>
   <form @submit.prevent='submitForm'>
-    <div class='form-control'>
+    <div class='form-control' :class='{invalid: !name.isValid}'>
       <label for='name'> Records Name </label>
-      <input type='text' id='name' v-model='name'>
+      <input type='text' id='name' v-model='name.val'>
+      <p v-if='!name.isValid'>Please enter the name of the Record</p>
     </div>
 
-    <div class='form-control'>
+    <div class='form-control' :class='{invalid: !bandName.isValid}'>
       <label for='bandName'> Band Name </label>
-      <input type='text' id='bandName' v-model.trim='bandName'>
+      <input type='text' id='bandName' v-model.trim='bandName.val'>
+      <p v-if='!bandName.isValid'>Please enter the name of the Band</p>
+
     </div>
 
-    <div class='form-control'>
+    <div class='form-control' :class='{invalid: !description.isValid}'>
       <label for='description'> Description </label>
-      <textarea type='text' id='description' rows='5' v-model.trim='description'/>
+      <textarea type='text' id='description' rows='5' v-model.trim='description.val' />
+      <p v-if='!description.isValid'>Please enter a brief description of the Record</p>
     </div>
 
-    <div class='form-control'>
+    <div class='form-control' :class='{invalid: !year.isValid}'>
       <label for='Year'> Year </label>
-      <input type='number' id='Year' v-model.number='year'>
+      <input type='number' id='Year' v-model.number='year.val'>
+      <p v-if='!year.isValid'>Please enter the year of the Record!</p>
     </div>
-    
-    <div class='form-control'>
+
+    <div class='form-control' :class='{invalid:!genre.isValid}'>
       <h3>Genre</h3>
       <div>
-        <input type='checkbox' id='rock' value='rock' v-model='genre'>
+        <input type='checkbox' id='rock' value='rock' v-model='genre.val'>
         <label for='rock'>Rock</label>
       </div>
 
       <div>
-        <input type='checkbox' id='indie' value='indie' v-model='genre'>
+        <input type='checkbox' id='indie' value='indie' v-model='genre.val'>
         <label for='indie'>Indie</label>
       </div>
 
       <div>
-        <input type='checkbox' id='pop' value='pop' v-model='genre'>
-        <label for='pop'>Pop</label>
+        <input type='checkbox' id='rap' value='rap' v-model='genre.val'>
+        <label for='rap'>Rap</label>
       </div>
+
+      <p v-if='!genre.isValid'>Please enter at least one genre!</p>
+
     </div>
+
+    <p v-if='!this.isValid'> Please Fix the Above errors and submit again.</p>
+
     <base-btn>Register</base-btn>
   </form>
 </template>
 
 <script>
 export default {
+  emits: ['save-data'],
   name: 'RecordForm',
   data() {
     return {
-      name: '',
-      bandName: '',
-      description: '',
-      genre: [],
-      year: '',
-    }
+      name: {
+        val: '',
+        isValid: true
+      },
+      bandName: {
+        val: '',
+        isValid: true
+      },
+      description: {
+        val: '',
+        isValid: true
+      },
+      genre: {
+        val: [],
+        isValid: true
+      },
+      year: {
+        val: '',
+        isValid: true
+      },
+      formComplete: true
+    };
   },
   methods: {
+    validationForm() {
+      this.formComplete = true;
+
+      if (this.name.val === '') {
+        this.name.isValid = false;
+        this.formComplete = false;
+      }
+
+      if (this.bandName.val === '') {
+        this.bandName.isValid = false;
+        this.formComplete = false;
+      }
+
+      if (this.description.val === '') {
+        this.description.isValid = false;
+        this.formComplete = false;
+      }
+
+      if (this.year.val === '') {
+        this.year.isValid = false;
+        this.formComplete = false;
+      }
+
+      if (this.genre.val.length === 0) {
+        this.genre.isValid = false;
+        this.formComplete = false;
+      }
+    },
     submitForm() {
+      this.validationForm();
+
+      if (!this.isValid) {
+        return;
+      }
+
       const formData = {
         name: this.name,
         bandName: this.bandName,
@@ -62,7 +124,7 @@ export default {
         yr: this.year,
         gnr: this.genre
       };
-      console.log(formData);
+      this.$emit('save-data', formData);
     }
 
   }
@@ -96,9 +158,9 @@ textarea {
 
 input:focus,
 textarea:focus {
-  background-color: #f0e6fd;
+  background-color: #FEF8EC;
   outline: none;
-  border-color: #3d008d;
+  border-color: #0A160C;
 }
 
 input[type='checkbox'] {
@@ -108,7 +170,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:focus {
-  outline: #3d008d solid 1px;
+  outline: #FEF8EC solid 1px;
 }
 
 h3 {

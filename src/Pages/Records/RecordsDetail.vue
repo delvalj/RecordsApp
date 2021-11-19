@@ -35,7 +35,7 @@ export default {
   },
   computed: {
     fullName() {
-      return this.selectedRecord.name + ' ' + this.selectedRecord.band;
+      return this.selectedRecord.name + ' - ' + this.selectedRecord.band;
     },
     contactLink() {
       return this.$route.path + '/' + this.id + '/' + 'contactStore';

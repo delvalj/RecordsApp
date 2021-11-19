@@ -21,7 +21,7 @@ export default {
   props: ['id', 'name', 'band', 'genre', 'year'],
   computed: {
     fullName() {
-      return this.name + ' ' + this.band;
+      return this.name + ' - ' + this.band;
     },
     contactStoreLink() {
       return this.$route.path + '/' + this.id + '/contactStore';  //records/r1/contactStore

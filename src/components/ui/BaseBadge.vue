@@ -36,7 +36,7 @@ export default {
   color: white;
 }
 
-.pop {
+.rap {
   background-color: #552521;
   color: white;
 }
