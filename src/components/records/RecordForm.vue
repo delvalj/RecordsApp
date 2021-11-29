@@ -46,7 +46,7 @@
 
     </div>
 
-    <p v-if='!this.isValid'> Please Fix the Above errors and submit again.</p>
+    <p v-if='!this.formComplete'> Please Fix the Above errors and submit again.</p>
 
     <base-btn>Register</base-btn>
   </form>
@@ -78,7 +78,8 @@ export default {
         val: '',
         isValid: true
       },
-      formComplete: true
+      formComplete: true,
+      isValid: true
     };
   },
   // watch: {

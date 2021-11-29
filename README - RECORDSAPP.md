@@ -19,7 +19,7 @@ npm install
 
 ### Para poner en funcionamiento:
 
-npm run dev
+npm run serve
 
 # Deployment
 
