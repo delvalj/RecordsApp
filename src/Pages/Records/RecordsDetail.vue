@@ -9,7 +9,7 @@
   <section>
     <base-card>
       <header>
-        <h2> Are u Interested? Reach out Now</h2>
+        <h2> Are u Interested? Reach out Now PLEASE!</h2>
         <base-btn link :to='contactLink'> Contact The Store</base-btn>
       </header>
     </base-card>
