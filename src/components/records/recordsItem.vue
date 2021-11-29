@@ -56,7 +56,7 @@ div {
 }
 
 .actions {
-  display: ;
+  /*display: ;*/
   justify-content: flex-end;
 }
 </style>
