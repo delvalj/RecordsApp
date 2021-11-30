@@ -30,6 +30,16 @@ export default {
             ' El álbum fue nombrado de tal manera por el grupo a causa de sus recientes problemas y el auge de la música punk.',
           price: 16.99
 
+        },
+        {
+          id: 'r4',
+          name: 'The New Abnormal',
+          band: 'The Strokes',
+          year: 2020,
+          genre: ['indie'],
+          description: 'El Mejor disco de los Strokes AGUANTE STROKES PERRO!',
+          price: 9.89
+
         }
 
       ]
