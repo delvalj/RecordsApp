@@ -15,7 +15,7 @@ export default {
   components: { RecordForm },
 
   methods: {
-    saveData(data) {
+     saveData(data) {
       this.$store.dispatch('records/registerRecord', data);
       this.$router.replace('/records')
     }
