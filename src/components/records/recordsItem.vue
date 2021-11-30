@@ -8,8 +8,9 @@
     </div>
 
     <div>
-      <base-btn mode='outline' class='actions' link :to='contactStoreLink'> View Details</base-btn>
-      <base-btn link :to='recordsDetailsLink' class='actions'> Contact Store</base-btn>
+      <base-btn link :to='recordsDetailsLink' class='actions'> View Details</base-btn>
+
+      <base-btn mode='outline' class='actions' link :to='contactStoreLink'>Contact Store </base-btn>
     </div>
 
   </li>
