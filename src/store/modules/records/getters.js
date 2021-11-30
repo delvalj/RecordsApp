@@ -9,7 +9,7 @@ export default {
     const records = getters.records;
     const userId = rootGetters.userId;
 
-    return records.some(record => record.id === userId)
+    return records.some(record => record.id === userId);
 
   }
 };
