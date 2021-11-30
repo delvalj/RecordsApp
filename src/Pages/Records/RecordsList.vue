@@ -58,8 +58,6 @@ export default {
     isRecord() {
       return this.$store.getters['records/isRecord'];
     },
-
-
     filteredRecords() {
       // the first records is the namespaced (on the main index.js) and the second one is the getters name
       const records = this.$store.getters['records/records'];

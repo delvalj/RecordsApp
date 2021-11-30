@@ -6,20 +6,21 @@
       <p v-if='!name.isValid'>Please enter the name of the Record</p>
     </div>
 
-    <div class='form-control' :class='{invalid: !bandName.isValid}' >
+    <div class='form-control' :class='{invalid: !bandName.isValid}'>
       <label for='bandName'> Band Name </label>
       <input type='text' id='bandName' v-model.trim='bandName.val' @blur="clearValidity('bandName')">
       <p v-if='!bandName.isValid'>Please enter the name of the Band</p>
 
     </div>
 
-    <div class='form-control' :class='{invalid: !description.isValid}'   >
+    <div class='form-control' :class='{invalid: !description.isValid}'>
       <label for='description'> Description </label>
-      <textarea type='text' id='description' rows='5' v-model.trim='description.val' @blur="clearValidity('description')" />
+      <textarea type='text' id='description' rows='5' v-model.trim='description.val'
+                @blur="clearValidity('description')" />
       <p v-if='!description.isValid'>Please enter a brief description of the Record</p>
     </div>
 
-    <div class='form-control' :class='{invalid: !year.isValid}'  >
+    <div class='form-control' :class='{invalid: !year.isValid}'>
       <label for='Year'> Year </label>
       <input type='number' id='Year' v-model.number='year.val' @blur="clearValidity('year')">
       <p v-if='!year.isValid'>Please enter the year of the Record!</p>
@@ -75,11 +76,11 @@ export default {
         isValid: true
       },
       year: {
-        val: '',
+        val: null,
         isValid: true
       },
-      formComplete: true,
-      isValid: true
+      formComplete: true
+      // isValid: true,
     };
   },
   // watch: {
@@ -120,7 +121,7 @@ export default {
     submitForm() {
       this.validationForm();
 
-      if (!this.isValid) {
+      if (!this.formComplete) {
         return;
       }
 
