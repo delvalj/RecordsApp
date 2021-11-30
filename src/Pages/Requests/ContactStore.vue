@@ -2,21 +2,20 @@
   <form action='' @submit.prevent='submitForm'>
     <div class='form-control' :class='{invalid: !email.isValid}'>
       <label for='email'> Your Email </label>
-      <input type='email' id='email'  v-model.trim="email.val"/>
-
-
+      <input type='email' id='email' v-model.trim='email.val' />
     </div>
 
     <div class='form-control' :class='{invalid: !message.isValid}'>
       <label for='message'> Mensaje </label>
-      <textarea rows='5' id='message' v-model.trim="message.val"/>
+      <textarea rows='5' id='message' v-model.trim='message.val' />
     </div>
 
     <div class='actions'>
       <base-btn>Send Message</base-btn>
     </div>
 
-    <p  class="errors" v-if="!formComplete">Please Fix the Errors</p>
+    <p class='errors' v-if='!formComplete'>Please Fix the Errors</p>
+
   </form>
 </template>
 
@@ -42,18 +41,27 @@ export default {
     submitForm() {
       this.formComplete = true;
 
-      if(this.email.val === '' || !this.email.val.includes('@') ) {
-        this.email.isValid = false
+      if (this.email.val === '' || !this.email.val.includes('@')) {
+        this.email.isValid = false;
       }
 
-      if(this.message.val === '' ) {
-        this.message.isValid = false
+      if (this.message.val === '') {
+        this.message.isValid = false;
       }
 
       if (this.email.val === '' || !this.email.val.includes('@') || this.message.val === '') {
         this.formComplete = false;
         return;
       }
+
+      this.$store.dispatch('requests/contactStore', {
+        email: this.email.val,
+        message: this.message.val,
+        recordId: this.$route.params.id
+
+      });
+
+      this.$router.replace('/records');
 
     }
   }

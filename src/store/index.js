@@ -1,10 +1,12 @@
 import { createStore } from 'vuex';
 
 import recordsModule from './modules/records/index';
+import requestsModule from './modules/requests/index';
 
 const store = createStore({
   modules: {
-    records: recordsModule
+    records: recordsModule,
+    requests: requestsModule
   },
   state() {
     return {
