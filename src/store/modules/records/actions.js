@@ -2,7 +2,7 @@ export default {
   registerRecord(context, data) {
     const recordsData = {
       // id: newDate().toISOString(),
-      id: context.rootGetters.userId,
+      id: context.rootGetters.getUserId,
       // id: 'r3',
       name: data.name,
       band: data.bandName,
