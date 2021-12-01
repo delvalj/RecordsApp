@@ -8,7 +8,7 @@
     <section>
 
       <div class='controls'>
-        <base-btn mode='outline'>
+        <base-btn mode='outline' @click='loadRecords'>
           Refresh
         </base-btn>
 
@@ -82,11 +82,18 @@ export default {
 
     }
   },
+  created() {
+    this.loadRecords();
+  },
   methods: {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
+    },
+    loadRecords() {
+      this.$store.dispatch('records/loadRecords');
     }
   }
+
 
 };
 </script>

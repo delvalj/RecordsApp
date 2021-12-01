@@ -1,6 +1,4 @@
 export default {
-
-
   async registerRecord(context, data) {
     const userId = context.rootGetters.getUserId;
     const recordsData = {
@@ -30,13 +28,46 @@ export default {
     const axios = require('axios').default;
     axios
       .put(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json`, JSON.stringify(recordsData))
-      .then(response => (this.info = response))
+      .then(response => (this.info = response));
 
 
     context.commit('registerRecord', {
       ...recordsData,
       id: userId
     });
+  },
+  async loadRecords(context) {
+    const axios = require('axios').default;
+
+    const response = await axios.
+      get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
+    );
+
+    const responseData = await response.data;
+
+    console.log(responseData);
+
+    if (!response.ok) {
+      //...
+    }
+
+    const records = [];
+
+    for (const key in responseData) {
+      const record = {
+        id: key,
+        name: responseData[key].name,
+        band: responseData[key].band,
+        year: responseData[key].year,
+        genre: responseData[key].genre,
+        description: responseData[key].description
+      };
+
+      records.push(record);
+    }
+
+    context.commit('setRecords', records);
 
   }
+
 };
