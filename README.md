@@ -11,7 +11,7 @@ git Clone <https://github.com/delvalj/RecordsApp.git>
 
 ## Installing
 
-## Para instalar los paquetes o  funcionalidades que incorpora:
+### Para instalar los paquetes o  funcionalidades que incorpora:
 
 npm install
 
@@ -36,9 +36,9 @@ Add additional notes about how to deploy this on a live system
    * "axios": "^0.24.0",
    * "core-js": "^3.6.5",
    * "vue": "^3.0.0",
-   *"vue-axios": "^3.4.0",
-   *"vue-router": "^4.0.12",
-   *"vuex": "^4.0.2"
+   * "vue-axios": "^3.4.0",
+   * "vue-router": "^4.0.12",
+   * "vuex": "^4.0.2"
   
 
 ## Contributing
