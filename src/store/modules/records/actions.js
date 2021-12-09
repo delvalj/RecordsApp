@@ -36,19 +36,19 @@ export default {
       id: userId
     });
   },
+
   async loadRecords(context) {
-    const axios = require('axios').default;
+    // const axios = require('axios').default;
 
-    const response = await axios.
-      get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
+    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
     );
+    const responseData = await response.json();
 
-    const responseData = await response.data;
-
-    console.log(responseData);
+    console.log(responseData, 'soy la resposne data BRO');
 
     if (!response.ok) {
-      //...
+      const error = new Error(responseData.message || 'Failed To Fetch');
+      throw error;
     }
 
     const records = [];

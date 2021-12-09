@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="!!error" title="An Error Ocurred!" @close="handleError">
+    <p> {{ error }}</p>
+  </base-dialog>
   <section>
     <records-filter @change-filter='setFilters'>
       FILTER
@@ -12,10 +15,13 @@
           Refresh
         </base-btn>
 
-        <base-btn link to='/registerRecord' v-if='!isRecord'>Register a Record</base-btn>
-
+        <base-btn link to='/registerRecord'>Register a Record</base-btn>
       </div>
-      <ul v-if='hasRecords'>
+      <div v-if='isLoading'>
+        <base-spinner></base-spinner>
+      </div>
+
+      <ul v-else-if='hasRecords'>
         <recordsItem
           v-for='record in filteredRecords'
           :key='record.id'
@@ -46,6 +52,8 @@ export default {
 
   data() {
     return {
+      isLoading: false,
+      error: null,
       activeFilters: {
         rock: true,
         indie: true,
@@ -56,7 +64,7 @@ export default {
 
   computed: {
     isRecord() {
-      return this.$store.getters['records/isRecord'];
+      return !this.isLoading && this.$store.getters['records/isRecord'];
     },
     filteredRecords() {
       // the first records is the namespaced (on the main index.js) and the second one is the getters name
@@ -77,6 +85,7 @@ export default {
       });
     },
 
+
     hasRecords() {
       return this.$store.getters['records/hasRecords'];
 
@@ -89,10 +98,19 @@ export default {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
     },
-    loadRecords() {
-      this.$store.dispatch('records/loadRecords');
+    async loadRecords() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('records/loadRecords');
+      } catch (error) {
+        this.error = error.message || 'Something Went Wrong!';
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
     }
-  }
+  },
 
 
 };
