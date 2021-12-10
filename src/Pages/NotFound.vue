@@ -1,5 +1,13 @@
 <template>
-<h2>NOT FOUND</h2>
+  <section>
+    <base-card>
+      <h2> PAGE NOT FOUND</h2>
+      <p> this page could not be found - Checkout our other
+        <router-link to="/records">Records!</router-link>
+      </p>
+    </base-card>
+  </section>
+
 </template>
 
 <script>
