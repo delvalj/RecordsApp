@@ -45,7 +45,7 @@ export default {
     );
     const responseData = await response.data;
 
-    console.log(responseData, 'soy la resposne data BRO');
+    console.log(responseData, 'soy la response data BRO');
 
     if (!response) {
       throw new Error(responseData.message || 'Failed To Fetch');
