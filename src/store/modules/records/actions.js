@@ -37,18 +37,18 @@ export default {
     });
   },
 
+  // ARREGLAR ACA ESTO
   async loadRecords(context) {
-    // const axios = require('axios').default;
+    const axios = require('axios').default;
 
-    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
+    const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
     );
-    const responseData = await response.json();
+    const responseData = await response.data;
 
-    console.log(responseData, 'soy la resposne data BRO');
+    console.log(responseData, 'soy la response data BRO');
 
-    if (!response.ok) {
-      const error = new Error(responseData.message || 'Failed To Fetch');
-      throw error;
+    if (!response) {
+      throw new Error(responseData.message || 'Failed To Fetch');
     }
 
     const records = [];

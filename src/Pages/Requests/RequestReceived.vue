@@ -1,14 +1,18 @@
 <template>
+  <base-dialog :show='!!error' title='Algo no funciona bien!' @close='handleError'>
+    <p> {{ error }}</p>
+  </base-dialog>
   <section>
     <base-card>
       <header>
         <h2>REQUESTS RECEIVED</h2>
       </header>
-      <ul v-if='hasRequests'>
+      <base-spinner v-if='isLoading'></base-spinner>
+      <ul v-else-if='hasRequests && !isLoading'>
         <requests-item v-for='req in receivedReq'
-                      :key='req.id'
-                      :email='req.userEmail'
-                      :message='req.message'
+                       :key='req.id'
+                       :email='req.userEmail'
+                       :message='req.message'
         >
         </requests-item>
       </ul>
@@ -24,6 +28,13 @@ export default {
 
   name: 'RequestReceived',
   components: RequestsItem,
+
+  data() {
+    return {
+      isLoading: false,
+      error: null
+    };
+  },
   computed: {
     receivedReq() {
       return this.$store.getters['requests/requests'];
@@ -31,7 +42,24 @@ export default {
     hasRequests() {
       return this.$store.getters['requests/hasRequests'];
     }
+  },
+  created() {
+    this.loadReq();
+  },
 
+  methods: {
+    async loadReq() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('requests/fetchReq');
+      } catch (error) {
+        this.error = error.message || 'Algo no anda bien!';
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
+    }
   }
 };
 </script>
