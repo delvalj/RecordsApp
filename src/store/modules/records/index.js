@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      lastFetch: null,
       records: [{
         id: 'r1',
         name: 'Room on Fire',
