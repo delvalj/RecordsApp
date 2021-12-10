@@ -4,5 +4,8 @@ export default {
   },
   setRecords(state, payload) {
     state.records = payload;
+  },
+  setTimer(state){
+    state.lastFetch = new Date().getTime();
   }
 };

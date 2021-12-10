@@ -38,7 +38,10 @@ export default {
   },
 
   // ARREGLAR ACA ESTO
-  async loadRecords(context) {
+  async loadRecords(context, payload) {
+    if(!payload.forceRefresh && !context.getters.timerUpdt) {
+      return;
+    }
     const axios = require('axios').default;
 
     const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
@@ -67,6 +70,7 @@ export default {
     }
 
     context.commit('setRecords', records);
+    context.commit('setTimer');
 
   }
 
