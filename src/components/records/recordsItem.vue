@@ -10,7 +10,7 @@
     <div>
       <base-btn link :to='recordsDetailsLink' class='actions'> View Details</base-btn>
 
-      <base-btn mode='outline' class='actions' link :to='contactStoreLink'>Contact Store </base-btn>
+<!--      <base-btn mode='outline' class='actions' link :to='contactStoreLink'>Contact Store</base-btn>-->
     </div>
 
   </li>
@@ -38,9 +38,13 @@ export default {
 
 <style scoped>
 li {
-  margin: 1rem 2rem;
+  display: inline-block;
+  margin: 1rem 1rem;
   border: 2px solid #424242;
   padding: 1rem;
+  text-align: center;
+  /*max-width: 20rem;*/
+  /*min-width: 20rem;*/
 }
 
 h3 {
@@ -59,5 +63,7 @@ div {
 .actions {
   /*display: ;*/
   justify-content: flex-end;
+  position: relative;
+  /*left: 37%;*/
 }
 </style>

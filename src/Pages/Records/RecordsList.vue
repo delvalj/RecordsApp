@@ -121,13 +121,14 @@ export default {
 <style scoped>
 ul {
   list-style: none;
-  margin: 0;
+  margin: 50px;
   padding: 0;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
+
 }
 
 
