@@ -44,7 +44,7 @@ export default {
     }
     const axios = require('axios').default;
 
-    const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.jso`
+    const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
     );
     const responseData = await response.data;
 
