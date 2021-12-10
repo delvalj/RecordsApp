@@ -1,4 +1,5 @@
 <template>
+  <div>
   <base-dialog :show="!!error" title="An Error Ocurred!" @close="handleError">
     <p> {{ error }}</p>
   </base-dialog>
@@ -11,7 +12,7 @@
     <section>
 
       <div class='controls'>
-        <base-btn mode='outline' @click='loadRecords'>
+        <base-btn mode='outline' @click='loadRecords(true)'>
           Refresh
         </base-btn>
 
@@ -38,6 +39,7 @@
 
     </section>
   </base-card>
+</div>
 
 </template>
 
@@ -98,10 +100,10 @@ export default {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
     },
-    async loadRecords() {
+    async loadRecords(refresh = false) {
       this.isLoading = true;
       try {
-        await this.$store.dispatch('records/loadRecords');
+        await this.$store.dispatch('records/loadRecords', { forceRefresh: refresh });
       } catch (error) {
         this.error = error.message || 'Something Went Wrong!';
       }
