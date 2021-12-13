@@ -16,8 +16,8 @@
           Refresh
         </base-btn>
 
-        <base-btn link to='/auth' v-if='!isLoggedIn'>
-            Login
+        <base-btn link to='/auth?redirect=registerRecord' v-if='!isLoggedIn'>
+            Login to register a Record!
         </base-btn>
 
         <base-btn v-if='isLoggedIn' link to='/registerRecord'>Register a Record</base-btn>

@@ -1,32 +1,32 @@
 <template>
   <div>
-    <base-dialog :show='!!error' title='an error occurred'  @close='handleError'>
-      <p> {{ error}}</p>
+    <base-dialog :show='!!error' title='an error occurred' @close='handleError'>
+      <p> {{ error }}</p>
     </base-dialog>
-<base-dialog :show='isLoading' title='Authenticating' fixed>
-  <base-spinner></base-spinner>
-</base-dialog>
-  <form @submit.prevent='submitForm'>
-    <base-card>
-      <div class='formControl'>
-        <label for='email'>E-Mail</label>
-        <input type='email' id='email' v-model.trim='email'>
-      </div>
+    <base-dialog :show='isLoading' title='Authenticating' fixed>
+      <base-spinner></base-spinner>
+    </base-dialog>
+    <form @submit.prevent='submitForm'>
+      <base-card>
+        <div class='formControl'>
+          <label for='email'>E-Mail</label>
+          <input type='email' id='email' v-model.trim='email'>
+        </div>
 
-      <div class='formControl'>
-        <label for='password'>Password</label>
-        <input type='password' id='password' v-model.trim='password'>
+        <div class='formControl'>
+          <label for='password'>Password</label>
+          <input type='password' id='password' v-model.trim='password'>
 
-      </div>
+        </div>
 
-      <p v-if='!formIsValid'> Ingrese un Email y Contraseña Validos</p>
+        <p v-if='!formIsValid'> Ingrese un Email y Contraseña Validos</p>
 
-      <base-btn class='btn_login'>{{ submitButtonCaption }}</base-btn>
-      <base-btn class='btn_login' type='button' mode='flat' @click='switchAutoMode'>{{ switchModeButtonCaption }}
-      </base-btn>
-    </base-card>
+        <base-btn class='btn_login'>{{ submitButtonCaption }}</base-btn>
+        <base-btn class='btn_login' type='button' mode='flat' @click='switchAutoMode'>{{ switchModeButtonCaption }}
+        </base-btn>
+      </base-card>
 
-  </form>
+    </form>
   </div>
 
 </template>
@@ -67,28 +67,28 @@ export default {
     async submitForm() {
       this.formIsValid = true;
 
+      const actionPayload = {
+        email: this.email,
+        password: this.password
+      };
+
       if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
         this.formIsValid = false;
         return;
 
       }
-
       this.isLoading = true;
 
       try {
         if (this.mode === 'login') {
-          console.log('HOLA');
-          await this.$store.dispatch('login',
-            {
-              email: this.email,
-              password: this.password
-            });
+          await this.$store.dispatch('login', actionPayload);
         } else {
-          await this.$store.dispatch('signup', {
-            email: this.email,
-            password: this.password
-          });
+          await this.$store.dispatch('signup', actionPayload);
         }
+        // esto es para que cuando no este logeado y vaya a registrarme me vuelva a cargar la misma pagina dodne estaba o sino vaya a records"re
+        const redirectUrl = '/' + (this.$route.query.redirect || 'records');
+        await this.$router.replace(redirectUrl);
+
       } catch (err) {
         this.error = err.message || 'Failed to Authenticate';
 
