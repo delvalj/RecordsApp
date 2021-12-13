@@ -6,6 +6,7 @@ import ContactStore from '@/Pages/Requests/ContactStore';
 import RequestReceived from '@/Pages/Requests/RequestReceived';
 import NotFound from '@/Pages/NotFound';
 import UserAuth from '@/Pages/auth/UserAuth';
+import store from './store/index';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -28,15 +29,18 @@ const router = createRouter({
     },
     {
       path: '/registerRecord',
-      component: RecordsRegister
+      component: RecordsRegister,
+      meta: { requiresAuth: true }
     },
     {
       path: '/requests',
-      component: RequestReceived
+      component: RequestReceived,
+      meta: { requiresAuth: true }
     },
     {
       path: '/auth',
-      component: UserAuth
+      component: UserAuth,
+      meta: { requiresUnauth: true }
     },
     {
       path: '/:notFound(.*)',
@@ -46,6 +50,18 @@ const router = createRouter({
 
 
   ]
+});
+
+// Navigations Guards
+
+router.beforeEach(function(to, _, next) {
+  if (to.meta.requiresAuth && !store.getters.isAuth) {
+    next('/auth');
+  } else if (to.meta.requiresUnauth && store.getters.isAuth) {
+    next('/records');
+  } else {
+    next();
+  }
 });
 
 export default router;
