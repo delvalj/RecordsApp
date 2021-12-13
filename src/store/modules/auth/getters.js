@@ -6,5 +6,8 @@ export default {
   // para que pueda llamar al token desde cualquier otro module de vuex.
   token(state){
     return state.token;
+  },
+  isAuth(state) {
+    return !!state.token;
   }
 }
