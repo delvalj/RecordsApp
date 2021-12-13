@@ -42,7 +42,7 @@ export default {
 
     if (!response.ok) {
       console.log(responseData);
-      const error = new Error(responseData.message || 'Failed to Auth');
+      const error = new Error(responseData.message || 'Failed to Auth, check your data!');
       throw error;
     }
     console.log(responseData);
