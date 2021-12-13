@@ -26,10 +26,14 @@ export default {
     context.commit('addRequest', newRequest);
   },
 
+
   async fetchReq(context) {
+
+    const token = context.rootGetters.token;
+
     const recordId = context.rootState.userId;
 
-    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests/${recordId}.json`);
+    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests/${recordId}.json?auth=` + token);
     // const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests.json`);
 
     const responseData = await response.json();

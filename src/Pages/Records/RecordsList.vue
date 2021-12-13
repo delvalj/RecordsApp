@@ -16,9 +16,13 @@
           Refresh
         </base-btn>
 
-        <base-btn link to='/registerRecord'>Register a Record</base-btn>
+        <base-btn link to='/auth?redirect=registerRecord' v-if='!isLoggedIn'>
+            Login to register a Record!
+        </base-btn>
+
+        <base-btn v-if='isLoggedIn' link to='/registerRecord'>Register a Record</base-btn>
       </div>
-      <div v-if='isLoading'>
+      <div v-if='isLoading && !isLoading'>
         <base-spinner></base-spinner>
       </div>
 
@@ -65,6 +69,9 @@ export default {
   },
 
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuth;
+    },
     isRecord() {
       return !this.isLoading && this.$store.getters['records/isRecord'];
     },
