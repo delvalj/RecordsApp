@@ -24,10 +24,12 @@ export default {
     //   // error
     // }
 
+    const token = context.rootGetters.token;
+
     // USING AXIOS
     const axios = require('axios').default;
     axios
-      .put(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json`, JSON.stringify(recordsData))
+      .put(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json?auth=` + token, JSON.stringify(recordsData))
       .then(response => (this.info = response));
 
 
