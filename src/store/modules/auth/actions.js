@@ -22,9 +22,9 @@ export default {
     context.commit('setUser', {
       token: responseData.idToken,
       userId: responseData.localId,
-      tokenExpiration: responseData.expiresIn,
+      tokenExpiration: responseData.expiresIn
 
-    })
+    });
   },
 
   async login(context, payload) {
@@ -50,9 +50,15 @@ export default {
     context.commit('setUser', {
       token: responseData.idToken,
       userId: responseData.localId,
-      tokenExpiration: responseData.expiresIn,
+      tokenExpiration: responseData.expiresIn
 
-
-    })
+    });
   },
-}
+  logout(context) {
+    context.commit('setUser', {
+      token: null,
+      userId: null,
+      tokenExpiration: null
+    });
+  }
+};

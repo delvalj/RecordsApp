@@ -15,6 +15,14 @@
         <li v-else>
           <router-link to='/auth'>Login</router-link>
         </li>
+
+        <li v-if='isLoggedIn'>
+          <base-btn @click='logout'>
+            Logout
+          </base-btn>
+        </li>
+
+
       </ul>
     </nav>
   </header>
@@ -26,6 +34,11 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuth;
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
     }
   }
 };
