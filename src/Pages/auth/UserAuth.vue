@@ -31,7 +31,9 @@ export default {
       email: '',
       password: '',
       formIsValid: true,
-      mode: 'login'
+      mode: 'login',
+      isLoading: false,
+      error: null
     };
   },
   computed: {
@@ -51,7 +53,6 @@ export default {
     }
   },
   methods: {
-
     submitForm() {
       this.formIsValid = true;
 
@@ -74,6 +75,7 @@ export default {
         });
       }
     },
+
     switchAutoMode() {
       if (this.mode === 'login') {
         this.mode = 'signup';
@@ -83,6 +85,9 @@ export default {
     }
   }
 };
+
+
+
 </script>
 
 <style scoped>
