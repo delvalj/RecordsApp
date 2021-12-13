@@ -91,12 +91,9 @@ export default {
 
       } catch (err) {
         this.error = err.message || 'Failed to Authenticate';
-
       }
-
       this.isLoading = false;
     },
-
 
     switchAutoMode() {
       if (this.mode === 'login') {

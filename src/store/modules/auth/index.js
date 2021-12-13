@@ -7,14 +7,13 @@ export default {
     return {
       userId: null,
       token: null,
-      tokenExpiration: null,
-      registered: null
+      didAutoLogout: false
     };
   },
 
   actions: actions,
   mutations: mutations,
-  getters:getters
+  getters: getters
 };
 
 
