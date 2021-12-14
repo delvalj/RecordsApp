@@ -17,7 +17,7 @@
         >
         </requests-item>
       </ul>
-<!--      <h3 v-else>You dont have any request yet!</h3>-->
+<!--      <h3 v-if=''>You dont have any request yet!</h3>-->
     </base-card>
   </section>
   </div>
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     receivedReq() {
-      console.log('HOLA SOY EL CONSOLE LOG ',this.$store.getters['requests/requests']);
+      // console.log('HOLA SOY EL CONSOLE LOG ',this.$store.getters['requests/requests']);
       return this.$store.getters['requests/requests'];
     },
     hasRequests() {
