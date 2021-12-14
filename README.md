@@ -13,7 +13,7 @@ Here there are some of the core concepts that you ll learn if you want to work w
 * Vue Router.
 * Use Firebase as a Backend.
 * HTTP Requests using the Fetch and also AXIOS.
-* Login and Authentication (How to deal with Token)
+* Login and Authentication (How to deal with Token).
 * How to deploy a project.
 * Using Firebase for Deploying the project.
 
