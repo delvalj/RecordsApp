@@ -49,7 +49,7 @@
 
 <script>
 import recordsItem from '../../components/records/recordsItem';
-import RecordsFilter from '@/components/records/RecordsFilter';
+import RecordsFilter from '../../components/records/RecordsFilter';
 
 export default {
   name: 'RecordsList',
@@ -63,16 +63,16 @@ export default {
       activeFilters: {
         rock: true,
         indie: true,
-        cuarteto: true,
-        jazz: true,
-        soul: true,
-        nacional: true,
-        espanola: true,
-        metal: true,
-        pop: true,
         rap: true,
+        nacional: true,
+        pop: true,
+        jazz: true,
         blues: true,
+        soul: true,
+        metal: true,
+        espanola: true,
         reggae: true,
+        cuarteto: true
       }
     };
   },
@@ -101,40 +101,42 @@ export default {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('cuarteto')) {
+        if (this.activeFilters.nacional && records.genre.includes('nacional')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('espanola')) {
+        if (this.activeFilters.cuarteto && records.genre.includes('cuarteto')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('pop')) {
+        if (this.activeFilters.espanola && records.genre.includes('espanola')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('metal')) {
+        if (this.activeFilters.pop && records.genre.includes('pop')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('nacional')) {
+        if (this.activeFilters.metal && records.genre.includes('metal')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('reggae')) {
+
+        if (this.activeFilters.reggae && records.genre.includes('reggae')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('jazz')) {
+        if (this.activeFilters.jazz && records.genre.includes('jazz')) {
           return true;
         }
 
-        if (this.activeFilters.rap && records.genre.includes('blues')) {
+        if (this.activeFilters.blues && records.genre.includes('blues')) {
           return true;
         }
 
-        return this.activeFilters.rap && records.genre.includes('soul');
-
+        if (this.activeFilters.soul && records.genre.includes('soul')) {
+          return true;
+        }
 
       });
     },

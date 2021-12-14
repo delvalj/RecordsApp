@@ -148,7 +148,7 @@ export default {
         this.formComplete = false;
       }
 
-      if (this.year.val === '') {
+      if (this.year.val === null) {
         this.year.isValid = false;
         this.formComplete = false;
       }

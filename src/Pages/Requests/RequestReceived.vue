@@ -8,7 +8,7 @@
       <header>
         <h2>REQUESTS RECEIVED</h2>
       </header>
-<!--      <base-spinner v-if='isLoading'></base-spinner>-->
+      <base-spinner v-if='isLoading'></base-spinner>
       <ul>
         <requests-item v-for='req in receivedReq'
                        :key='req.id'
