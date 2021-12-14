@@ -1,36 +1,70 @@
 
 # RECORDS APP 
 
-Pequeña aplicacion en la cual puedes agregar los discos preferidos de tus bandas y crear una biblioteca personal para mantener un control y registro de lo que has escuchado en el año. 
+Small and easy app, built maybe for an Album Store owner, in which you can register your favourite Albums from all times and add some information about them. 
+You can also leave a message so that you can contact with the Store.
+
+I used <https://firebase.google.com/> for the backend.
+
+### Core Concepts 
+Here there are some of the core concepts that you ll learn if you want to work with this code!
+
+* Vuex.
+* Vue Router.
+* Use Firebase as a Backend.
+* HTTP Requests using the Fetch and also AXIOS.
+* Login and Authentication (How to deal with Token)
+* How to deploy a project.
+* Using Firebase for Deploying the project.
+
 
 ## Getting Started
 
-### Clonamos la plantilla base o boilerplate:
+### Cloning the Project:
 
-git Clone <https://github.com/delvalj/RecordsApp.git>
+git clone <https://github.com/delvalj/RecordsApp.git>
 
 ## Installing
 
-### Para instalar los paquetes o  funcionalidades que incorpora:
+###  How to Install it
 
-npm install
+Open the terminal and run: 
+
+- npm install
 
 ## Starting 
 
-### Para poner en funcionamiento:
+### Open the project in LocalHost:
 
-npm run serve
+In the terminal: 
+
+- npm run serve
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system.
+
+In order to deploy the project i used the Firesbase Hosting option.
+In your local console in Firebase you have the option HOSTING. Go for it.
+
+After that you ll have to install some things to make it work...
+
+- npm run build
+
+After you are done with these you ll find a new directory called DIST. This is the project with all the optimization needed for firebase.
+
+Then, following Firebase instructions
+
+- npm install -g firebase-tools
+- firebase login
+- firebase init
+- firebase deploy
 
 ## Built With
 
 * [VUE.JS 3] 
 <https://v3.vuejs.org/>
-
-
+  
 ## Dependencies
 
    * "axios": "^0.24.0",
@@ -39,20 +73,12 @@ Add additional notes about how to deploy this on a live system
    * "vue-axios": "^3.4.0",
    * "vue-router": "^4.0.12",
    * "vuex": "^4.0.2"
-  
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 
 ## Authors
 
 * **Joaquin del Val** - *Initial work* - [delvalj] 
  https://github.com/delvalj
- 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
+  
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
