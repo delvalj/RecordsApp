@@ -74,4 +74,5 @@ export default {
   margin: 10px;
   left: 37%;
 }
+
 </style>

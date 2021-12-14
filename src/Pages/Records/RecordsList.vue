@@ -1,49 +1,49 @@
 <template>
   <div>
-  <base-dialog :show="!!error" title="An Error Ocurred!" @close="handleError">
-    <p> {{ error }}</p>
-  </base-dialog>
-  <section>
-    <records-filter @change-filter='setFilters'>
-      FILTER
-    </records-filter>
-  </section>
-  <base-card>
+    <base-dialog :show='!!error' title='An Error Ocurred!' @close='handleError'>
+      <p> {{ error }}</p>
+    </base-dialog>
     <section>
-
-      <div class='controls'>
-        <base-btn mode='outline' @click='loadRecords(true)'>
-          Refresh
-        </base-btn>
-
-        <base-btn link to='/auth?redirect=registerRecord' v-if='!isLoggedIn'>
-            Login to register a Record!
-        </base-btn>
-
-        <base-btn v-if='isLoggedIn' link to='/registerRecord'>Register a Record</base-btn>
-      </div>
-      <div v-if='isLoading && !isLoading'>
-        <base-spinner></base-spinner>
-      </div>
-
-      <ul v-else-if='hasRecords'>
-        <recordsItem
-          v-for='record in filteredRecords'
-          :key='record.id'
-          :id='record.id'
-          :name='record.name'
-          :band='record.band'
-          :genre:='record.genre'
-          :year='record.year'>
-        </recordsItem>
-      </ul>
-      <h3 v-else>
-        No records Found
-      </h3>
-
+      <records-filter @change-filter='setFilters'>
+        FILTER
+      </records-filter>
     </section>
-  </base-card>
-</div>
+    <base-card>
+      <section>
+
+        <div class='controls'>
+          <base-btn mode='outline' @click='loadRecords(true)'>
+            Refresh
+          </base-btn>
+
+          <base-btn link to='/auth?redirect=registerRecord' v-if='!isLoggedIn'>
+            Login to register a Record!
+          </base-btn>
+
+          <base-btn v-if='isLoggedIn' link to='/registerRecord'>Register a Record</base-btn>
+        </div>
+        <div v-if='isLoading && !isLoading'>
+          <base-spinner></base-spinner>
+        </div>
+
+        <ul v-else-if='hasRecords'>
+          <recordsItem
+            v-for='record in filteredRecords'
+            :key='record.id'
+            :id='record.id'
+            :name='record.name'
+            :band='record.band'
+            :genre:='record.genre'
+            :year='record.year'>
+          </recordsItem>
+        </ul>
+        <h3 v-else>
+          No records Found
+        </h3>
+
+      </section>
+    </base-card>
+  </div>
 
 </template>
 
@@ -63,7 +63,16 @@ export default {
       activeFilters: {
         rock: true,
         indie: true,
-        rap: true
+        cuarteto: true,
+        jazz: true,
+        soul: true,
+        nacional: true,
+        espanola: true,
+        metal: true,
+        pop: true,
+        rap: true,
+        blues: true,
+        reggae: true,
       }
     };
   },
@@ -78,6 +87,7 @@ export default {
     filteredRecords() {
       // the first records is the namespaced (on the main index.js) and the second one is the getters name
       const records = this.$store.getters['records/records'];
+
       return records.filter(records => {
         if (this.activeFilters.rock && records.genre.includes('rock')) {
           return true;
@@ -90,14 +100,47 @@ export default {
         if (this.activeFilters.rap && records.genre.includes('rap')) {
           return true;
         }
-        return false;
+
+        if (this.activeFilters.rap && records.genre.includes('cuarteto')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('espanola')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('pop')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('metal')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('nacional')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('reggae')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('jazz')) {
+          return true;
+        }
+
+        if (this.activeFilters.rap && records.genre.includes('blues')) {
+          return true;
+        }
+
+        return this.activeFilters.rap && records.genre.includes('soul');
+
+
       });
     },
 
-
     hasRecords() {
       return this.$store.getters['records/hasRecords'];
-
     }
   },
   created() {
@@ -119,17 +162,17 @@ export default {
     handleError() {
       this.error = null;
     }
-  },
-
-
+  }
 };
 </script>
 
 <style scoped>
 ul {
-  list-style: none;
-  margin: 50px;
-  padding: 0;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  right: 20px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .controls {

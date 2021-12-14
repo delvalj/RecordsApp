@@ -2,9 +2,7 @@ export default {
   async registerRecord(context, data) {
     const userId = context.rootGetters.getUserId;
     const recordsData = {
-      // id: newDate().toISOString(),
-      // id: context.rootGetters.getUserId,
-      // id: 'r3',
+
       name: data.name,
       band: data.bandName,
       year: data.yr,
@@ -12,41 +10,45 @@ export default {
       description: data.desc
     };
 
-    // HTTP REQ USING FETCH
-
-    // const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json`,
-    //   {
-    //     method: 'PUT',
-    //     body: JSON.stringify(recordsData)
-    //   });
-    //
-    // if (!response.ok) {
-    //   // error
-    // }
-
     const token = context.rootGetters.token;
 
     // USING AXIOS
     const axios = require('axios').default;
-    axios
-      .put(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json?auth=` + token, JSON.stringify(recordsData))
-      .then(response => (this.info = response));
 
+    // POST REQUEST
+
+    axios.post(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json?auth=` + token, JSON.stringify(recordsData))
+      .then(response => (this.info = response));
 
     context.commit('registerRecord', {
       ...recordsData,
       id: userId
     });
+
+
+    //   // PUT REQUEST
+    //   axios
+    //     .put(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json?auth=` + token, JSON.stringify(recordsData))
+    //     .then(response => (this.info = response));
+    //
+    //   context.commit('registerRecord', {
+    //     ...recordsData,
+    //     id: userId
+    //   });
+
   },
 
-  // ARREGLAR ACA ESTO
+
   async loadRecords(context, payload) {
-    if(!payload.forceRefresh && !context.getters.timerUpdt) {
+
+    const userId = context.rootGetters.getUserId;
+
+    if (!payload.forceRefresh && !context.getters.timerUpdt) {
       return;
     }
     const axios = require('axios').default;
 
-    const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records.json`
+    const response = await axios.get(`https://recordsapp-e4425-default-rtdb.firebaseio.com/records/${userId}.json`
     );
     const responseData = await response.data;
 

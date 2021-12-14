@@ -28,6 +28,7 @@
 
     <div class='form-control' :class='{invalid:!genre.isValid}'>
       <h3>Genre</h3>
+
       <div>
         <input type='checkbox' id='rock' value='rock' v-model='genre.val' @blur="clearValidity('genre')">
         <label for='rock'>Rock</label>
@@ -41,6 +42,45 @@
       <div>
         <input type='checkbox' id='rap' value='rap' v-model='genre.val' @blur="clearValidity('genre')">
         <label for='rap'>Rap</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='nacional' value='nacional' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='nacional'>Nacional</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='jazz' value='jazz' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='jazz'>Jazz</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='blues' value='blues' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='blues'>Blues</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='soul' value='soul' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='soul'>Soul</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='espanola' value='espanola' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='espanola'>Española</label>
+      </div>
+      <div>
+        <input type='checkbox' id='metal' value='metal' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='metal'>Metal</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='reggae' value='reggae' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='reggae'>Reggae</label>
+      </div>
+
+      <div>
+        <input type='checkbox' id='cuarteto' value='cuarteto' v-model='genre.val' @blur="clearValidity('genre')">
+        <label for='cuarteto'>Cuarteto</label>
       </div>
 
       <p v-if='!genre.isValid'>Please enter at least one genre!</p>
@@ -152,7 +192,7 @@ label {
 
 input[type='checkbox'] + label {
   font-weight: normal;
-  display: inline;
+  display: inline-grid;
   margin: 0 0 0 0.5rem;
 }
 

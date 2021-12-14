@@ -8,8 +8,8 @@
       <header>
         <h2>REQUESTS RECEIVED</h2>
       </header>
-      <base-spinner v-if='isLoading'></base-spinner>
-      <ul v-else-if='hasRequests && !isLoading'>
+<!--      <base-spinner v-if='isLoading'></base-spinner>-->
+      <ul>
         <requests-item v-for='req in receivedReq'
                        :key='req.id'
                        :email='req.userEmail'
@@ -17,7 +17,7 @@
         >
         </requests-item>
       </ul>
-      <h3 v-else>You dont have any request yet!</h3>
+<!--      <h3 v-else>You dont have any request yet!</h3>-->
     </base-card>
   </section>
   </div>
@@ -39,6 +39,7 @@ export default {
   },
   computed: {
     receivedReq() {
+      console.log('HOLA SOY EL CONSOLE LOG ',this.$store.getters['requests/requests']);
       return this.$store.getters['requests/requests'];
     },
     hasRequests() {

@@ -28,12 +28,9 @@ export default {
 
 
   async fetchReq(context) {
-
     const token = context.rootGetters.token;
 
-    const recordId = context.rootState.userId;
-
-    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests/${recordId}.json?auth=` + token);
+    const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests.json?auth=` + token);
     // const response = await fetch(`https://recordsapp-e4425-default-rtdb.firebaseio.com/requests.json`);
 
     const responseData = await response.json();
@@ -44,14 +41,19 @@ export default {
 
     const requests = [];
 
-    for (const key in responseData) {
-      const request = {
-        id: key,
-        recordId: recordId,
-        userEmail: responseData[key].userEmail,
-        message: responseData[key].message
-      };
-      requests.push(request);
+    for (const record in responseData) {
+      for (const request in responseData[record]) {
+
+        console.log(responseData[record][request]);
+
+        const newRequest = {
+          id: `${record}-${request}`,
+          recordId: record,
+          userEmail: responseData[record][request].userEmail,
+          message: responseData[record][request].message
+        };
+        requests.push(newRequest);
+      }
 
       context.commit('setRequests', requests);
     }
