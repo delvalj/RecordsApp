@@ -3,19 +3,19 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { defineAsyncComponent } from 'vue';
 
 // import RecordsDetail from '@/Pages/Records/RecordsDetail';
-// import RecordsRegister from '@/Pages/Records/RecordsRegister';
-// import ContactStore from '@/Pages/Requests/ContactStore';
-// import RequestReceived from '@/Pages/Requests/RequestReceived';
-// import UserAuth from '@/Pages/auth/UserAuth';
+import RecordsRegister from '@/Pages/Records/RecordsRegister';
+import ContactStore from '@/Pages/Requests/ContactStore';
+import RequestReceived from '@/Pages/Requests/RequestReceived';
+import UserAuth from '@/Pages/auth/UserAuth';
 import RecordsList from '@/Pages/Records/RecordsList';
 import NotFound from '@/Pages/NotFound';
 import store from './store/index';
 
 const RecordsDetail = defineAsyncComponent(() => import('@/Pages/Records/RecordsDetail'));
-const RecordsRegister = defineAsyncComponent(() => import('@/Pages/Records/RecordsRegister'));
-const ContactStore = defineAsyncComponent(() => import('@/Pages/Requests/ContactStore'));
-const RequestReceived = defineAsyncComponent(() => import('@/Pages/Requests/RequestReceived'));
-const UserAuth = defineAsyncComponent(() => import( '@/Pages/auth/UserAuth'));
+// const RecordsRegister = defineAsyncComponent(() => import('@/Pages/Records/RecordsRegister'));
+// const ContactStore = defineAsyncComponent(() => import('@/Pages/Requests/ContactStore'));
+// const RequestReceived = defineAsyncComponent(() => import('@/Pages/Requests/RequestReceived'));
+// const UserAuth = defineAsyncComponent(() => import( '@/Pages/auth/UserAuth'));
 
 const router = createRouter({
   history: createWebHistory(),
